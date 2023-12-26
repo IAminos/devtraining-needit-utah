@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Add human ressources 3&amp;4.</description>
+        <field>u_request_type</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Add Choices</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+    if ( newValue == '') {
+      return;
+    }
+    
+    var whatneeded = g_form.getValue('u_what_needed');
+    //hmdAllah
+    // Clear all of the choices from the What needed field choice list
+    g_form.clearValue('u_what_needed');
+	//g_form.removeOption('u_what_needed','hr1');
+    
+    // If the value of the Request type field is hr, add
+    // two hr choices and other to the What needed field choice list
+//     if(newValue == 'hr'){
+		
+//       g_form.addOption('choice_test','hr1','Human Resources 3',0);
+// 		alert('hellloooo');
+//       g_form.addOption('choice_test','hr2','Human Resources 4',1);
+//       g_form.addOption('choice_test','other','Other',2);
+//     }
+    // If the value of the Request type field is facilities, add
+    // two facilities choices and other to the What needed field
+    // choice list
+//     if(newValue == 'facilities'){
+//       g_form.addOption('u_what_needed','facilities1','Facilities 5');
+//       g_form.addOption('u_what_needed','facilities2','Facilities 6');
+//       g_form.addOption('u_what_needed','other','Other');
+//     }
+    // If the value of the Request type field is legal, add
+    // two legal choices and other to the What needed field
+    // choice list
+//     if(newValue == 'legal'){
+//       g_form.addOption('u_what_needed','legal1','Legal 1');
+//       g_form.addOption('u_what_needed','legal2','Legal 2');
+//       g_form.addOption('u_what_needed','other','Other');
+//     }
+    
+    // If the form is loading and it is not a new record, set the u_what_needed value to the
+    // value from the record before it was loaded
+    if(isLoading && !g_form.isNewRecord()){
+      g_form.setValue('u_what_needed', whatneeded);
+    }
+  }
+
+
+
+
+/*function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+
+	
+
+   if (!g_form.isNewRecord() && isLoading || newValue === '') {
+	
+	return;}
+	g_form.clearOptions('u_what_needed');
+	var choice_value=g_form.getValue('u_request_type');
+	
+	var choice_label =g_form.getOption('u_request_type',choice_value).text;
+	//alert(choice_label);
+	
+	
+
+   //Type appropriate comment here, and begin script below
+	if(choice_label=='Human Resources'){
+		//alert('hellooo');
+		g_form.addOption('u_what_needed','hr3','Human Resources 3');
+		//g_form.setOption('u_what_needed','hr3','Human Resources 3');
+		
+	}*/
+	
+	
+   
+//}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-12-22 10:14:24</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>39764e4147d7f110d1df690cd36d43c2</sys_id>
+        <sys_mod_count>64</sys_mod_count>
+        <sys_name>Add Choices</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_39764e4147d7f110d1df690cd36d43c2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-12-26 16:38:23</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
