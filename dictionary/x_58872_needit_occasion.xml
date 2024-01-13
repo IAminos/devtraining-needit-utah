@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="1105744c93f7791072e67c5efaba1091" label="occasion" max_length="40" name="x_58872_needit_occasion" type="collection">
+        <element display="true" label="Birthday" max_length="40" name="birthday" type="glide_date"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="User Name" max_length="32" name="user_name" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="user_name"/>
+        </index>
+    </element>
+</database>
