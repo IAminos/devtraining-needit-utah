@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="81de8eac937f3d1072e67c5efaba10ca" extends="task" label="earthquake" max_length="40" name="x_58872_needit_earthquake" type="collection"/>
+</database>

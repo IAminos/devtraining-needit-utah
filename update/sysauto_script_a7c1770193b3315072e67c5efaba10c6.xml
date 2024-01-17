@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>generate new random needit records test 1</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2024-01-16 14:22:22</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[var usGR = new GlideRecord('sys_user');
+usGR.query();
+
+var users_total=0;
+var userGR_list=[];
+while (usGR.next()){
+	userGR_list.push(usGR.getValue('name'));
+	users_total++;
+}
+//gs.info(userGR_list);
+var new_record = new GlideRecord('x_58872_needit_needit');
+
+
+var tomorrow= new GlideDateTime();
+
+var rand_int_user_index=0;
+var rand_int_days=0;
+for (var i=0;i<=20;i++){
+	//new_record.initialize();
+	new_record.newRecord();
+	//rand_int_user_index= GlideSecureRandomUtil.getSecureRandomIntBound(users_total);
+	rand_int_user_index= Math.floor(Math.random()*users_total);
+	new_record.u_what_needed='service: '+i;
+
+	new_record.setValue('u_requested_for',userGR_list[rand_int_user_index]);
+	new_record.setValue('u_requested_for_email',new_record.u_requested_for.email);
+	rand_int_days=0;
+	//rand_int_days= GlideSecureRandomUtil.getSecureRandomIntBound(10);
+	rand_int_days=Math.floor(Math.random()*10);
+	tomorrow.addDaysLocalTime(rand_int_days);
+	new_record.setValue('u_when_needed',tomorrow);//better than new_record.u_when_needed (Pass-By-Reference)
+	tomorrow.addDaysLocalTime(-(rand_int_days));
+	
+	new_record.setValue('short_description','3333333332new test');
+	new_record.insert();
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-16 14:25:04</sys_created_on>
+        <sys_id>a7c1770193b3315072e67c5efaba10c6</sys_id>
+        <sys_mod_count>36</sys_mod_count>
+        <sys_name>generate new random needit records test 1</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sysauto_script_a7c1770193b3315072e67c5efaba10c6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-16 23:12:37</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
